@@ -1,9 +1,13 @@
+import 'package:bmicalculator/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'calculate_button.dart';
 import 'constants.dart';
 import 'icon_content.dart';
+import 'result_page.dart';
 import 'reusable_card.dart';
+import 'rounded_icon_button.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -233,36 +237,19 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            color: kBtmContainerColour,
-            margin: EdgeInsets.only(top: 10.0),
-            height: kBtmContHeight,
-            width: double.infinity,
+          CalculateButton(
+            title: 'CALCULATE',
+            onClick: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultPage(),
+                ),
+              );
+            },
           ),
         ],
       ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  final IconData child;
-  final Function onClick;
-
-  RoundIconButton({@required this.child, @required this.onClick});
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(child),
-      elevation: 0.0,
-      constraints: BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
-      onPressed: onClick,
     );
   }
 }
