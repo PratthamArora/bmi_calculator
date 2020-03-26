@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'constants.dart';
+import '../constants.dart';
+
 class CalculateButton extends StatelessWidget {
   final Function onClick;
   final String title;
 
-  CalculateButton({@required this.title, @required this.onClick,})
+  CalculateButton({
+    @required this.title,
+    @required this.onClick,
+  });
 
   @override
   Widget build(BuildContext context) {

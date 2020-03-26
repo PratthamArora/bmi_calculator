@@ -1,13 +1,12 @@
-import 'package:bmicalculator/result_page.dart';
+import 'package:bmicalculator/components/calculate_button.dart';
+import 'package:bmicalculator/components/icon_content.dart';
+import 'package:bmicalculator/components/reusable_card.dart';
+import 'package:bmicalculator/components/rounded_icon_button.dart';
+import 'package:bmicalculator/constants.dart';
+import 'package:bmicalculator/result_gen.dart';
+import 'package:bmicalculator/views/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import 'calculate_button.dart';
-import 'constants.dart';
-import 'icon_content.dart';
-import 'result_page.dart';
-import 'reusable_card.dart';
-import 'rounded_icon_button.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -240,10 +239,16 @@ class _InputPageState extends State<InputPage> {
           CalculateButton(
             title: 'CALCULATE',
             onClick: () {
+              ResultGenerator calc =
+                  ResultGenerator(height: height, weight: weight);
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ResultPage(),
+                  builder: (context) => ResultPage(
+                    bmiResult: calc.calBMI(),
+                    resultText: calc.getResult(),
+                    interpret: calc.getInterpret(),
+                  ),
                 ),
               );
             },
