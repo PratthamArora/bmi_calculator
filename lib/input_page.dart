@@ -13,7 +13,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int height = 150;
-  int weight = 50;
+  int weight = 55;
+  int age = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +64,7 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: ReusableCard(
               cardChild: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Text(
                     'HEIGHT',
@@ -77,6 +78,9 @@ class _InputPageState extends State<InputPage> {
                       Text(
                         height.toString(),
                         style: kSubLabelTextStyle,
+                      ),
+                      SizedBox(
+                        width: 4.0,
                       ),
                       Text(
                         'cm',
@@ -118,15 +122,29 @@ class _InputPageState extends State<InputPage> {
                   child: ReusableCard(
                     colour: kActiveCardColour,
                     cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
                         Text(
                           'WEIGHT',
                           style: kLabelTextStyle,
                         ),
-                        Text(
-                          weight.toString(),
-                          style: kSubLabelTextStyle,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: <Widget>[
+                            Text(
+                              weight.toString(),
+                              style: kSubLabelTextStyle,
+                            ),
+                            SizedBox(
+                              width: 4.0,
+                            ),
+                            Text(
+                              'kg',
+                              style: kLabelTextStyle,
+                            ),
+                          ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -159,6 +177,57 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     colour: kActiveCardColour,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Text(
+                          'AGE',
+                          style: kLabelTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: <Widget>[
+                            Text(
+                              age.toString(),
+                              style: kSubLabelTextStyle,
+                            ),
+                            SizedBox(
+                              width: 4.0,
+                            ),
+                            Text(
+                              'yrs',
+                              style: kLabelTextStyle,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            RoundIconButton(
+                              onClick: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                              child: FontAwesomeIcons.minus,
+                            ),
+                            SizedBox(
+                              width: 15.0,
+                            ),
+                            RoundIconButton(
+                              child: FontAwesomeIcons.plus,
+                              onClick: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
