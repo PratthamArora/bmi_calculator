@@ -23,8 +23,6 @@ class CalculateButton extends StatelessWidget {
           ),
         ),
         color: kBtmContainerColour,
-        padding: EdgeInsets.only(bottom: 20.0),
-        margin: EdgeInsets.only(top: 10.0),
         height: kBtmContHeight,
         width: double.infinity,
       ),
